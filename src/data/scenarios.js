@@ -1,10 +1,84 @@
+export function getTagVariant(label) {
+  const categories = {
+    pink: ['Fighter', 'Negotiator', 'Diplomat', 'Avoider', 'People Pleaser', 'Coaching', 'Mentoring', 'Coaching vs Mentoring', 'Mentoring vs Coaching'],
+    cobalt: ['Radical Candor', 'AID Model', 'SBI Model', 'GROW Model', 'Ruinous Empathy', 'Integrative Negotiation', 'Distributive Negotiation', 'Facilitation as Leadership', "Priya Parker — Purpose", 'ABC Triangle', 'ABC Triangle — Attitude', 'ABC Triangle — Context', 'DesignOps', 'Psychological Safety', 'Commitment & Consistency'],
+    green: ['Expert Power', 'Referent Power', 'Legitimate Power', 'Coercive Power', 'Reward Power', 'Informational Power', 'Connection Power', 'Resource Power', 'Presence Power', "Lukes' 2nd Dimension", "Lukes' Dimensions", 'French & Raven'],
+    orange: ['Cialdini — Reciprocation', 'Cialdini — Liking', 'Cialdini — Scarcity', 'Cialdini — Unity', 'Cialdini — Authority'],
+  }
+  for (const [variant, terms] of Object.entries(categories)) {
+    if (terms.some(term => label === term || label.includes(term) || term.includes(label))) {
+      return variant
+    }
+  }
+  return 'outline'
+}
+
+export const tagDescriptions = {
+  // Conflict styles
+  'Fighter':            'Direct and forceful; useful in high-stakes moments but can damage relationships.',
+  'Negotiator':         'Seeks joint solutions; finds third options neither party initially considered.',
+  'Diplomat':           'Protects harmony and lowers defensiveness; useful when trust is fragile.',
+  'Avoider':            'Steps back from conflict; useful when emotions are high or stakes are low.',
+  'People Pleaser':     "Prioritizes others' needs; builds goodwill but risks authenticity.",
+  'Coaching':           'Asks questions to help someone surface their own insight rather than directing them.',
+  'Mentoring':          "Shares experience and perspective to guide someone through a challenge they haven't faced before.",
+  'Coaching vs Mentoring':  'Coaching asks questions to surface insight; mentoring shares experience and advice.',
+  'Mentoring vs Coaching':  'Mentoring shares experience and advice; coaching asks questions to surface insight.',
+  'Coaching — GROW':    'Goal, Reality, Options, Will: a structured coaching conversation that surfaces the other person\'s own answers.',
+  // Frameworks
+  'Radical Candor':            'Care personally and challenge directly at the same time.',
+  'AID Model':                 'Action, Impact, Development: structure feedback around what happened and what changes.',
+  'SBI Model':                 'Situation, Behavior, Impact: keep feedback specific and observable.',
+  'GROW Model':                'Goal, Reality, Options, Will: a coaching conversation structure.',
+  'Ruinous Empathy':           'Being kind in the moment at the cost of honesty and real help.',
+  'Facilitation as Leadership':'Using meeting design and presence to create conditions for good work.',
+  'Priya Parker — Purpose':    "Every gathering needs a clear purpose; the host's job is to protect it.",
+  'ABC Triangle':              'Attitude, Behaviour, Context: the three invisible layers of any conflict.',
+  'ABC Triangle — Attitude':   "The underlying mindset driving someone's behavior in a conflict.",
+  'ABC Triangle — Context':    'The situation and constraints shaping the conflict from the outside.',
+  'DesignOps':                 'Orchestrating people, processes, and tools to amplify design at scale.',
+  'Psychological Safety':      "The shared belief that it's safe to speak up, take risks, and be honest.",
+  'Integrative Negotiation':   'Win-win: finding joint gain through open-minded collaboration.',
+  'Distributive Negotiation':  "Win-lose negotiation: one party's gain is the other's loss.",
+  'Commitment & Consistency':  'People align with prior commitments; use this to make agreements stick.',
+  'Commitment and Consistency':'People align with prior commitments; use this to make agreements stick.',
+  // Power concepts
+  'Expert Power':        'Influence through deep knowledge and skill others value.',
+  'Referent Power':      'Influence through identity and association; others want to be like you.',
+  'Legitimate Power':    'Authority from role or title; unstable if the role is removed.',
+  'Coercive Power':      'Ability to punish non-compliance; creates resentment if overused.',
+  'Reward Power':        'Ability to compensate compliance through tangible or intangible means.',
+  'Informational Power': 'Control of information others need; short-term and diminishing.',
+  'Connection Power':    'Influence through who you know and can connect others to.',
+  'Resource Power':      'Control over budget, tools, or access others need.',
+  'Presence Power':      'Influence through how you occupy a room — composure, attentiveness, and physical presence.',
+  "Lukes' 2nd Dimension": "Power operates through what never gets put on the agenda at all.",
+  "Lukes' Dimensions":   'Power shapes not just decisions but what is allowed to become a decision.',
+  'French & Raven':      "French and Raven's taxonomy of the six sources through which people exert social influence.",
+  // Influence principles
+  'Cialdini — Reciprocation': 'People return favors; give first to create goodwill and obligation.',
+  'Cialdini — Liking':        'People say yes to those they like and feel connected to.',
+  'Cialdini — Scarcity':      'Limited availability increases perceived value.',
+  'Cialdini — Unity':         'Shared identity creates influence; emphasize what you have in common.',
+  'Cialdini — Authority':     'People defer to credible experts; signal expertise clearly.',
+  // Topic tags
+  'Sponsorship':          "Using your social capital to advocate for someone else's visibility or advancement.",
+  'Power':                'The ability to influence decisions, behavior, and what gets put on the agenda.',
+  'Negotiation':          'A conversation aimed at reaching agreement between parties with different interests.',
+  'Facilitation':         'Designing and hosting conditions that help groups think and decide well together.',
+  'Peer Dynamics':        'The patterns of influence and deference that emerge between people at the same level.',
+  'Positional Authority': 'Influence that comes from your title or role, not from expertise or relationships.',
+  'Invisible Dynamics':   'Power and status patterns that shape conversations without being named.',
+  'Peer Feedback':        'Feedback given between colleagues at a similar level — without the cover of authority.',
+}
+
 export const scenarios = [
   {
     id: '01',
     number: '01',
     title: 'Quiet Redirect',
     tags: ['Power', 'Negotiation', 'Invisible Dynamics'],
-    tagVariants: ['pink', 'cobalt', 'outline'],
+    tagVariants: ['green', 'cobalt', 'outline'],
     description: 'A roadmap was finalized without you in the room. No one did anything malicious — you were just not there.',
     decisionCount: 3,
     nodes: {
@@ -146,7 +220,7 @@ export const scenarios = [
     number: '02',
     title: 'Room Goes Quiet',
     tags: ['Facilitation', 'Psychological Safety', 'Peer Dynamics'],
-    tagVariants: ['pink', 'green', 'cobalt'],
+    tagVariants: ['cobalt', 'cobalt', 'outline'],
     description: 'You\'re running a design critique for a junior designer. A senior engineer joins uninvited and starts redirecting the work. Your junior designer goes quiet.',
     decisionCount: 3,
     nodes: {
@@ -298,7 +372,7 @@ export const scenarios = [
     number: '03',
     title: 'Org Chart Shortcut',
     tags: ['Power', 'Positional Authority', 'Negotiation'],
-    tagVariants: ['pink', 'orange', 'cobalt'],
+    tagVariants: ['green', 'outline', 'cobalt'],
     description: 'A director two levels above you messages you directly with a \'quick ask\' that contradicts your team\'s current direction. Saying yes undermines your PM. Saying no feels risky.',
     decisionCount: 3,
     nodes: {
@@ -450,7 +524,7 @@ export const scenarios = [
     number: '04',
     title: 'Uncomfortable Truth',
     tags: ['Peer Feedback', 'Radical Candor', 'Psychological Safety'],
-    tagVariants: ['pink', 'cobalt', 'green'],
+    tagVariants: ['outline', 'cobalt', 'cobalt'],
     description: 'You\'re in a 1:1 with a peer designer. Their work has a real problem you\'ve seen before. They didn\'t ask for your opinion. It goes to stakeholders tomorrow.',
     decisionCount: 3,
     nodes: {
