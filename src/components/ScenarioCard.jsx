@@ -9,7 +9,7 @@ export default function ScenarioCard({ scenario, onClick }) {
       <div className="scenario-card__description">{scenario.description}</div>
       <div className="scenario-card__tags">
         {scenario.tags.map((tag, i) => (
-          <Tag key={tag} label={tag} variant={scenario.tagVariants[i]} />
+          <Tag key={tag} label={tag} variant={scenario.tagVariants[i]} hideTooltip={true} />
         ))}
       </div>
       <div className="scenario-card__cta">Enter →</div>

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { getTagVariant, tagDescriptions } from '../data/scenarios.js'
 
-export default function Tag({ label, variant }) {
+export default function Tag({ label, variant, hideTooltip }) {
   const resolvedVariant = variant ?? getTagVariant(label)
   const description = tagDescriptions[label]
   const [tooltipPos, setTooltipPos] = useState(null)
@@ -25,7 +25,7 @@ export default function Tag({ label, variant }) {
       onMouseLeave={description ? handleMouseLeave : undefined}
     >
       <span className={`tag tag--${resolvedVariant}`}>{label}</span>
-      {description && tooltipPos && (
+      {description && tooltipPos && !hideTooltip && (
         <div
           className={`tag-tooltip tag-tooltip--${resolvedVariant}`}
           style={{
