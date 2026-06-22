@@ -5,7 +5,6 @@ import Nav from './components/Nav.jsx'
 import ScenarioCard from './components/ScenarioCard.jsx'
 import ScenarioPlayer from './components/ScenarioPlayer.jsx'
 import Tag from './components/Tag.jsx'
-import SplashScreen from './components/SplashScreen.jsx'
 
 const FRAMEWORK_CATEGORIES = [
   {
@@ -79,7 +78,6 @@ const FRAMEWORK_CATEGORIES = [
 ]
 
 function App() {
-  const [showSplash, setShowSplash] = useState(true)
   const [selectedScenario, setSelectedScenario] = useState(null)
   const [openCategories, setOpenCategories] = useState(new Set())
   const [selectedItems, setSelectedItems] = useState({})
@@ -123,7 +121,6 @@ function App() {
 
   return (
     <>
-      {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       <Nav />
       <div className="page home">
         <div className="home__header">
@@ -132,7 +129,7 @@ function App() {
         </div>
         <div className="section-eyebrow">01</div>
         <h2 className="section-heading">Scenarios</h2>
-        <div className="scenario-grid">
+        <div className="scenario-grid scenario-grid--animate">
           {scenarios.map((scenario) => (
             <ScenarioCard
               key={scenario.id}
